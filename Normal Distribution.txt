@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+from numpy.random import seed
+from numpy.random import randint
+from numpy import mean
+from numpy import var
+import numpy as np
+import math
+from scipy import stats
+meand=0
+arr1=[]
+
+for i in range(1,1000):
+    m=0
+    for j in range(0,2):
+        m=m+np.random.randint(1,7)
+    meand=meand+m/2
+    arr1.append(meand)
+    meand=0
+meand=sum(arr1)/1000
+print("Mean of the distribution is ", meand)
+variance=np.var(np.array(arr1))
+print("Variance of the distribution is",variance)
+sd=np.sqrt(variance)
+print("Deviation of the distribution is",sd)
+plt.hist(arr1,10,normed=True)
+plt.xlabel("Mean")
+plt.ylabel("Number")
+
+x=math.sqrt(2.916)/math.sqrt(2)
+y=np.linspace(1,6,900)
+z=stats.norm.pdf(y,3.5,x)
+plt.plot(y,z)
+plt.show()
